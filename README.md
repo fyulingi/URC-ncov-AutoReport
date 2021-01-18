@@ -26,7 +26,7 @@
 
    ![](imgs/secrets.png)
 
-6. 默认的打卡时间是每天的早上 7: 30、中午 12: 30 和晚上 19: 30，可能会有数分钟的浮动。如需选择其它时间，可以修改 `.github/workflows/report.yml`中的 `cron`，详细说明参见[安排的事件](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#scheduled-events)，请注意这里使用的是**国际标准时间 UTC**，北京时间的数值比它大 8 个小时。
+6. 默认的打卡时间是每天的早上 7: 30、中午 12: 30 和晚上 19: 30，可能会有数分钟的浮动。如需选择其它时间，可以修改 `.github/workflows/report.yml` 中的 `cron`，详细说明参见[安排的事件](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#scheduled-events)，请注意这里使用的是**国际标准时间 UTC**，北京时间的数值比它大 8 个小时。
 
 7. 在 Actions 选项卡可以确认打卡情况。如果打卡失败（可能是临时网络问题等原因），脚本会自动重试，三次尝试后如果依然失败，将返回非零值提示构建失败。
 
