@@ -1,8 +1,6 @@
 # 中国滑稽大学(University of Ridiculous of China)健康打卡平台自动打卡脚本
 
-![Auto-Report](https://github.com/apylers/USTC-ncov-AutoReport/workflows/Auto-report%20action/badge.svg)
-![School](https://img.shields.io/badge/School-URC-blue.svg)
-![Language](https://img.shields.io/badge/language-Python3-yellow.svg)
+![School](https://img.shields.io/badge/School-URC-blue.svg)![Language](https://img.shields.io/badge/Language-Python3-yellow.svg)![Auto-Report](https://github.com/apylers/URC-ncov-AutoReport/workflows/Auto-Report/badge.svg)
 
 ## 说明
 
