@@ -12,11 +12,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      STUID: ${{ secrets.Stuid }}
-      PASSWORD: ${{ secrets.Password }}
-      ATHOME: 1
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -25,9 +20,8 @@ jobs:
           python-version: 3.x
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run report script from school
-        if: $ATHOME -nq 1
-        run: python report.py data_school.json "$STUID" "$PASSWORD"
-      - name: Run report script from home
-        if: $ATHOME -eq 1
+      - name: Run report script
+        env:
+          STUID: ${{ secrets.Stuid }}
+          PASSWORD: ${{ secrets.Password }}
         run: python report.py data_home.json "$STUID" "$PASSWORD"
