@@ -10,10 +10,10 @@ from bs4 import BeautifulSoup
 
 
 class Report(object):
-    def __init__(self, id, password, data):
-        self.id = id
+    def __init__(self, stuid, password, data_file):
+        self.stuid = stuid
         self.password = password
-        self.data = data
+        self.data_file = data_file
 
     def report(self):
         session = self.login()
@@ -24,7 +24,7 @@ class Report(object):
         soup = BeautifulSoup(data, "html.parser")
         token = soup.find("input", {"name": "_token"})["value"]
 
-        with open(self.data, "r+") as f:
+        with open(self.data_file, "r+") as f:
             data = f.read()
             data = json.loads(data)
             data["_token"] = token
@@ -37,9 +37,7 @@ class Report(object):
         session.post(url, data=data, headers=headers)
         data = session.get("https://weixine.ustc.edu.cn/2020").text
         soup = BeautifulSoup(data, "html.parser")
-        token = soup.find(
-            "span", {"style": "position: relative; top: 5px; color: #666;"}
-        ).text
+        token = soup.find("span", {"style": "position: relative; top: 5px; color: #666;"}).text
         pattern = re.compile("202[0-9]-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
 
         flag = False
@@ -67,7 +65,7 @@ class Report(object):
         data = {
             "model": "uplogin.jsp",
             "service": "https://weixine.ustc.edu.cn/2020/caslogin",
-            "username": self.id,
+            "username": self.stuid,
             "password": self.password,
         }
         session = requests.Session()
@@ -77,12 +75,12 @@ class Report(object):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="USTC nCov auto report script.")
-    parser.add_argument("data", help="Path to your own data", type=str)
-    parser.add_argument("id", help="Student ID", type=str)
+    parser = argparse.ArgumentParser(description="URC ncov AutoReport")
+    parser.add_argument("data_file", help="Path to your own data", type=str)
+    parser.add_argument("stuid", help="Student ID", type=str)
     parser.add_argument("password", help="Password", type=str)
     args = parser.parse_args()
-    auto_reporter = Report(id=args.id, password=args.password, data=args.data)
+    auto_reporter = Report(stuid=args.stuid, password=args.password, data_file=args.data_file)
 
     for i in range(3):
         if auto_reporter.report():
