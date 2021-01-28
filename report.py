@@ -1,11 +1,10 @@
 import argparse
 import json
-import pytz
 import re
-import requests
-
 from datetime import datetime
 
+import pytz
+import requests
 from bs4 import BeautifulSoup
 
 
