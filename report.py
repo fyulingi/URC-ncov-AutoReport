@@ -65,7 +65,7 @@ class Report(object):
             "model": "uplogin.jsp",
             "service": "https://weixine.ustc.edu.cn/2020/caslogin",
             "warn": "",
-            "showCode": "1",
+            "showCode": "",
             "username": self.stuid,
             "password": self.password,
             "button": "",
