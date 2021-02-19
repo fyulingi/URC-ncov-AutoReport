@@ -61,11 +61,14 @@ class Report(object):
         print("Login...")
 
         url = "https://passport.ustc.edu.cn/login"
-        data = {
+        data = {    
             "model": "uplogin.jsp",
             "service": "https://weixine.ustc.edu.cn/2020/caslogin",
+            "warn": "",
+            "showCode": "1",
             "username": self.stuid,
             "password": self.password,
+            "button": "",
         }
         session = requests.Session()
         session.post(url, data=data)
